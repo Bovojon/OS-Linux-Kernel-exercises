@@ -15,7 +15,7 @@ int main() {
 		printf("Enter a positive integer (not 0):\n");
 		scanf("%d", &i);
 	}
-	pid = fork();
+	pid = fork();			// Create a new process
 	if (pid == 0) {
 		printf("%d\n",i);
 		while (i != 1) {
