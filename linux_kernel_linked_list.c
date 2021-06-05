@@ -20,7 +20,7 @@ LIST_HEAD(birthday_list);
 /* Function 1 - main function that loads birthdays*/
 int load_birthdays(void){
     /* Allocate memory for 5 birthday elements in the linked list */
-    birthday *person;
+    struct birthday *person;
     int i = 0;
     for(i = 0; i < BIRTHDAYS_NUM; i++){
         /* kmalloc is the normal method of allocating memory in the kernel. slab.h is needed to use kmalloc. GFP_KERNEL allocates normal kernel ram. */
@@ -52,7 +52,7 @@ int simple_init(void) {
 /* Function 3 - main function to delete linked list from kernel memory */
 int remove_birthdays(void) {
   /* Traverse the linked list and delete its elements. */
-  birthday *ptr, *next;
+  struct birthday *ptr, *next;
   // list_for_each_entry_safe is from list.h and it iterates over list of given type safe against removal of list entry
   list_for_each_entry_safe(ptr, next, &birthday_list, list) {
       printk(KERN_INFO "Removing Birthday: %d/%d/%d\n", ptr->month, ptr->day, ptr->year);
